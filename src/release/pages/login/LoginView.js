@@ -1,0 +1,66 @@
+import React from "react";
+import {Grid, TextField, withStyles } from "@material-ui/core";
+import background from '../../../assets/images/backgroud.jpg';
+import logo from '../../../assets/images/logo.png';
+import ButtonCustom from "../../components/ButtonCustom";
+import {Form,Field} from 'react-final-form';
+import TextFieldCustom from "../../components/TextFieldCustom";
+const styles = theme => ({
+    page: {
+        minHeight: "100vh",
+        display: 'flex',
+        alignItems: 'center',
+        backgroundImage: 'url(' + background + ')',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        padding:theme.spacing(8)
+    },
+    landing_page: {
+        height: "320px",
+        display: 'flex',
+        backgroundColor: "#ffffff",
+        borderRadius: theme.spacing(2),//old:8
+        alignItems: 'center',
+        justifyContent:'center'
+    },
+    logo: {
+        width: 120,
+        height: 46,
+    },
+    layout_logo:{
+        display: 'flex',
+        justifyContent:'center',
+
+    },
+    box:{
+        display:'flex',
+        padding:theme.spacing(8),
+        flexDirection: "column",
+    },
+    button:{
+        marginBottom:theme.spacing(4),
+        borderRadius:theme.spacing(8),
+        marginTop:theme.spacing(4)
+    }
+})
+function LoginView(props) {
+    const { classes, handleLogin,onSubmit } = props;
+    return (
+        <Grid md={12} item className={classes.page}>
+            <Grid md={3} item></Grid>
+            <Grid className={classes.landing_page} md={6} item container xs={12} direction="row">
+                <Grid item xs={12} className={classes.layout_logo}>
+                    <img src={logo} alt='logo' className={classes.logo} />
+                </Grid>
+                <Grid item xs={12} md={8} className={classes.box}>
+                    <TextFieldCustom fullWidth label="Email"></TextFieldCustom>
+                    <TextFieldCustom fullWidth label="Password"></TextFieldCustom>
+                    <ButtonCustom fullWidth className={classes.button} color='primary' onClick={handleLogin}>Login</ButtonCustom>
+                </Grid>
+            </Grid>
+            <Grid md={3} item></Grid>
+        </Grid>
+
+    )
+}
+export default withStyles(styles)(LoginView);
